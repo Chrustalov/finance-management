@@ -1,1 +1,19 @@
 // Entry point for your Sass build
+
+
+//footer/////////////////
+.footer {
+  bottom: 0;
+  padding: 20px;
+  width: 100%;
+  background-color: #74756a;
+color: rgb(86, 108, 149);
+}
+
+.main {
+  min-height: calc(100vh - 48px);
+}
+.nav {
+  background-color: #74756a;
+color: rgb(86, 108, 149);
+}
