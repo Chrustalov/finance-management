@@ -1,4 +1,15 @@
-// Entry point for your Sass build
+@import 'bootstrap/scss/bootstrap';
+@import 'users_forms.sass.scss';
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+body {
+  font-family: 'Poppins', sans-serif;
+}
+
+p {
+  margin: 0;
+}
 
 
 //footer/////////////////
@@ -7,7 +18,7 @@
   padding: 20px;
   width: 100%;
   background-color: #74756a;
-color: rgb(86, 108, 149);
+  color: rgb(86, 108, 149);
 }
 
 .main {

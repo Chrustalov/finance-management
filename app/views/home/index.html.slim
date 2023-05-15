@@ -1,0 +1,13 @@
+.home_block1 
+  h1 hellj 
+.home_block2 
+  h2 r;lr;lv
+.btn.btn-primary Lol
+
+
+li class="header__menu-item"
+  - if current_user
+    = link_to "Вихід", destroy_user_session_path, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "header__menu-item-link exit"
+  - else
+    = link_to "Вхід", new_user_session_path, class: "header__menu-item-link exit"
+ 
