@@ -4,6 +4,9 @@ class HomeController < ApplicationController
 
   def index
     # Код дії
+    @credits = Credit.all
+    @deposits = Deposit.all
+    @outlays = Outlay.all
   end
 
   private

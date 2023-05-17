@@ -1,0 +1,7 @@
+-@credits.each do |credit|
+  .credit_index
+    p =credit.value
+    - if credit.coment.present?
+      p = credit.coment
+    .button
+      li = link_to 'credit_update', edit_post_category_path(credit)
