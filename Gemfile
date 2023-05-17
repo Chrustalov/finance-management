@@ -5,7 +5,7 @@ ruby "3.1.0"
 
 gem "rails", "~> 7.0.4", ">= 7.0.4.3"
 
-gem "pg", "~> 1.1"
+gem 'sqlite3'
 gem "puma", "~> 5.0"
 gem "jsbundling-rails"
 gem "turbo-rails"
@@ -17,6 +17,7 @@ gem "redis", "~> 4.0"
 gem "slim"
 gem "devise"
 gem 'simple_form'
+gem "pundit", "~> 2.3"
 gem "sprockets-rails"
 
 gem 'tzinfo-data'
@@ -36,3 +37,4 @@ group :test do
   gem "selenium-webdriver"
   gem "webdrivers"
 end
+
