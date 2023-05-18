@@ -43,7 +43,7 @@ private
   end
 
   def credit_params 
-    params.require(:credit).permit(:value, :user_id)
+    params.require(:credit).permit(:value,:coment, :user_id)
   end
 
 end
