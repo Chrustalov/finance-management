@@ -11,7 +11,7 @@ class DepositsController < ApplicationController
   end
 
   def create
-    @deposit = Deposit.new deposit_params
+    @deposit = current_user.deposits.build(deposit_params)
     if @deposit.save
       redirect_to root_path
     else 
@@ -46,7 +46,7 @@ private
   end
 
   def deposit_params 
-    params.require(:deposit).permit(:value)
+    params.require(:deposit).permit(:value, :user_id)
   end
 
 end

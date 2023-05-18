@@ -11,7 +11,7 @@ class OutlaysController < ApplicationController
   end
 
   def create
-    @outlay = Outlay.new outlay_params
+    @outlay = current_user.outlays.build(outlay_params)
     if @outlay.save
       redirect_to root_path
     else 

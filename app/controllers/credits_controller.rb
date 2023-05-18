@@ -12,7 +12,7 @@ class CreditsController < ApplicationController
   end
 
   def create
-    @credit = Credit.new credit_params
+    @credit = current_user.credits.build(credit_params)
     if @credit.save
       redirect_to root_path
     else 
@@ -47,7 +47,7 @@ private
   end
 
   def credit_params 
-    params.require(:credit).permit(:value)
+    params.require(:credit).permit(:value, :user_id)
   end
 
 end
