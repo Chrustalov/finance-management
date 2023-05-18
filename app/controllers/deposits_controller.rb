@@ -28,7 +28,7 @@ class DepositsController < ApplicationController
   end
 
   def destroy 
-    deposit.destroy
+    @deposit.destroy
     redirect_to root_path
   end
 
@@ -39,7 +39,7 @@ private
   end
 
   def set_deposit 
-    @deposit = Deposit.find_by id: params[id:]
+    @deposit = Deposit.find_by id: params[:id]
   end
 
   def deposit_params 

@@ -1,4 +1,10 @@
-=form_with model: @deposit do |f| 
-  .form_deposit
-    =f.number_field :value 
-    =f.submit "submit"
+.form-container
+  .form-content
+    = simple_form_for @deposit do |f|
+      = f.label :value, label: 'Сума депозиту', class: 'input-title'
+      = f.input :value, label: false, input_html: { class: "create__input" }, type: "number", placeholder: "Сума депозиту"
+      = f.label :coment, label: 'Коментар до депозиту', class: 'input-title'
+      = f.input :coment, label: false, input_html: { class: "create__input" }, placeholder: "Коментар до депозиту"
+      .form-actions
+        a.btn.filled href=root_path Скасувати
+        = f.submit "Створити", class: "btn"

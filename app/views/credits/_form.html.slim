@@ -1,4 +1,10 @@
-=form_with model: @credit do |f| 
-  .form_credit
-    =f.number_field :value 
-    =f.submit "submit"
+.form-container
+  .form-content
+    = simple_form_for @credit do |f|
+      = f.label :value, label: 'Сума кредиту', class: 'input-title'
+      = f.input :value, label: false, input_html: { class: "create__input" }, type: "number", placeholder: "Сума кредиту"
+      = f.label :coment, label: 'Коментар до кредиту', class: 'input-title'
+      = f.input :coment, label: false, input_html: { class: "create__input" }, placeholder: "Коментар до кредиту"
+      .form-actions
+        a.btn.filled href=root_path Скасувати
+        = f.submit "Створити", class: "btn"

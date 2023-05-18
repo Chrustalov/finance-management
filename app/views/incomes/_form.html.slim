@@ -1,5 +1,10 @@
-=form_with model: @income do |f| 
-  .form_income
-    =f.number_field :value 
-    =f.text_field :coment 
-    =f.submit "submit"
+.form-container
+  .form-content
+    = simple_form_for @income do |f|
+      = f.label :value, label: 'Сума доходу', class: 'input-title'
+      = f.input :value, label: false, input_html: { class: "create__input" }, type: "number", placeholder: "Сума доходу"
+      = f.label :coment, label: 'Коментар до доходу', class: 'input-title'
+      = f.input :coment, label: false, input_html: { class: "create__input" }, placeholder: "Коментар до доходу"
+      .form-actions
+        a.btn.filled href=root_path Скасувати
+        = f.submit "Створити", class: "btn"

@@ -5,12 +5,21 @@
         = image_tag "user_icon.png"
         = current_user.email
         .user__bill
-          .balance = current_user.balance
-          .deposit = current_user.deposit
-          .credit = current_user.credit
-        .personal__data  
-          .phone
-            = current_user.phone
+          .balance 
+            span Баланс
+            = current_user.balance
+          .deposit 
+            span Депозит
+            = current_user.deposit
+          .credit 
+            span Кредит
+            = current_user.credit
+        .actions-inner
+          = link_to "Добавити дохід", new_outlay_path, class: "btn"
+          = link_to "Добавити витрату", new_outlay_path, class: "btn"
+          = link_to "Добавити депозит", new_outlay_path, class: "btn"
+          = link_to "Добавити кредит", new_outlay_path, class: "btn"
+        .btn.filled Статистика
         .exit
           - if current_user
             = link_to "Вихід", destroy_user_session_path, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "header__menu-item-link exit"
@@ -32,42 +41,74 @@
             | Кредити
       #myTabContent.tab-content
         #incomes-tab-pane.tab-pane.fade.show.active[role="tabpanel" aria-labelledby="incomes-tab" tabindex="0"]
-          - unless @incomes.blank?
-            - @incomes.each do |income| 
-              .item
-                .item__left
-                  h4.item__sum 
-                    span Сума
-                    = income.value
-                  p.item__text = income.coment
-                .item__right
-                  = link_to image_tag("exit.svg"), income_path(income),
-                    data: { turbo_method: :delete, turbo_confirm: "Чи впевнені ви в своїх діях?" }
-                  = link_to image_tag("edit.svg"), edit_income_path(income.id), class: "edit-icon"
-          - else
-            .not-items
-              .text У вас немає доходів. <br> Бажаєте створити?
+          .item__inner
+            - unless @incomes.blank?
+              - @incomes.each do |income| 
+                .item
+                  .item__left
+                    h4.item__sum 
+                      span Сума
+                      = income.value
+                    p.item__text = income.coment
+                  .item__right
+                    = link_to image_tag("exit.svg"), income_path(income.id), method: :delete,
+                      data: { turbo_confirm: "Чи впевнені ви в своїх діях?" }
+                    = link_to image_tag("edit.svg"), edit_income_path(income.id), class: "edit-icon"
+            - else
+              .not-items
+                .text У вас немає доходів. <br> <span>Бажаєте добавити?</span>
+                = link_to "Добавити", new_income_path, class: "btn"
         #outlays-tab-pane.tab-pane.fade[role="tabpanel" aria-labelledby="outlays-tab" tabindex="0"]
-          - if @outlays
-            - @outlays.each do |f| 
-              .home_deposit
-                p = f.value 
-                p Витрата
-          - else
-            .not-items
-              .text У вас немає доходів. <br> Бажаєте створити?
+          .item__inner
+            - unless @outlays.blank?
+              - @outlays.each do |outlay| 
+                .item
+                  .item__left
+                    h4.item__sum 
+                      span Сума
+                      = outlay.value
+                    p.item__text = outlay.coment
+                  .item__right
+                    = link_to image_tag("exit.svg"), outlay_path(outlay), method: :delete,
+                      data: { turbo_confirm: "Чи впевнені ви в своїх діях?" }
+                    = link_to image_tag("edit.svg"), edit_outlay_path(outlay.id), class: "edit-icon"
+            - else
+              .not-items
+                .text У вас немає витрат. <br> <span>Бажаєте добавити?</span>
+                = link_to "Добавити", new_outlay_path, class: "btn"
         #deposits-tab-pane.tab-pane.fade[role="tabpanel" aria-labelledby="deposits-tab" tabindex="0"]
-          - if @deposits
-            - @deposits.each do |f| 
-              .home_deposit
-                p = f.value 
-                p Депозит
-          - else
-            .not-items
-              .text У вас немає доходів. <br> Бажаєте створити?
+          .item__inner
+            - unless @deposits.blank?
+              - @deposits.each do |deposit| 
+                .item
+                  .item__left
+                    h4.item__sum 
+                      span Сума
+                      = deposit.value
+                    p.item__text = deposit.coment
+                  .item__right
+                    = link_to image_tag("exit.svg"), deposit_path(deposit), method: :delete,
+                      data: { turbo_confirm: "Чи впевнені ви в своїх діях?" }
+                    = link_to image_tag("edit.svg"), edit_deposit_path(deposit.id), class: "edit-icon"
+            - else
+              .not-items
+                .text У вас немає депозитів. <br> <span>Бажаєте добавити?</span>
+                = link_to "Добавити", new_deposit_path, class: "btn"
         #credits-tab-pane.tab-pane.fade[role="tabpanel" aria-labelledby="credits-tab" tabindex="0"]
-          - if @credits
-            - @credits.each do |f| 
-              .home_deposit
-                p = f.value 
-                p Кредит
+          .item__inner
+            - unless @credits.blank?
+              - @credits.each do |credit| 
+                .item
+                  .item__left
+                    h4.item__sum 
+                      span Сума
+                      = credit.value
+                    p.item__text = credit.coment
+                  .item__right
+                    = link_to image_tag("exit.svg"), credit_path(credit), method: :delete,
+                      data: { turbo_confirm: "Чи впевнені ви в своїх діях?" }
+                    = link_to image_tag("edit.svg"), edit_credit_path(credit.id), class: "edit-icon"
+            - else
+              .not-items
+                .text У вас немає кредитів. <br> <span>Бажаєте добавити?</span>
+                = link_to "Добавити", new_credit_path, class: "btn"

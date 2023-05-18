@@ -15,6 +15,7 @@
     border-radius: 10px;
   }
   &__left {
+    height: 100%;
     width: 33%;
     padding: 30px;
     background: #ffffff;
@@ -25,6 +26,7 @@
       display: flex;
       align-items: center;
       flex-direction: column;
+      height: 100%;
     }
     img {
       height: 100px;
@@ -36,9 +38,69 @@
       border: 1px solid #000;
       padding: 10px 10px 0;
     }
+    .exit {
+      margin-top: auto;
+    }
+    .user__bill {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      .balance {
+        margin-top: 40px;
+        display: flex;
+        align-items: center;
+        font-size: 28px;
+        font-weight: 600;
+        line-height: 1.2;
+        color: #000;
+        margin-bottom: 40px;
+        span {
+          margin-right: 10px;
+          font-size: 24px;
+          font-weight: 400;
+        }
+      }
+      .deposit, .credit {
+        display: flex;
+        align-items: center;
+        font-size: 20px;
+        font-weight: 600;
+        line-height: 1.2;
+        color: #000;
+        margin-bottom: 10px;
+        span {
+          margin-right: 10px;
+          font-size: 16px;
+          font-weight: 400;
+        }
+      }
+    }
+    .actions-inner {
+      margin-top: 50px;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      .btn {
+        font-size: 16px;
+        width: 48%;
+        padding: 0;
+        margin-bottom: 25px;
+      }
+    }
+    .btn.filled {
+      font-size: 17px;
+      line-height: 1.2;
+      font-weight: 600;
+      letter-spacing: 0.35px;
+      color: #DC143C;
+      margin-top: 15px;
+      height: 50px;
+      width: fit-content;
+      padding: 0 40px;
+    }
   }
   &__right {
-    background: #e9e9e9;
+    background: #f3f3f3;
     border-radius: 0 15px 15px 0;
     padding: 40px 30px;
     width: 67%;
@@ -70,12 +132,16 @@
     }
   }
   .tab-content {
-    margin-top: 40px;
+    margin-top: 20px;
+    border-top: 1px solid #ffffff;
+    padding-top: 30px;
     .tab-pane {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: space-between;
+      .item__inner {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+      }
       .item {
         width: 48%;
         background: #ffffff;
@@ -108,11 +174,55 @@
       }
       .not-items {
         display: flex;
+        flex-direction: column;
         align-items: center;
         justify-content: center;
         width: 100%;
         height: 100%;
+        margin-top: 100px;
+        .text {
+          text-align: center;
+          font-size: 21px;
+          font-weight: 400;
+          line-height: 2.3;
+          color: #000;
+          span {
+            margin-top: 15px;
+            font-weight: 600;
+            font-size: 26px;
+            color: #DC143C;
+          }
+        }
+        .btn {
+          margin-top: 10px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: fit-content;
+          padding: 12px 30px;
+        }
       }
     }
+  }
+}
+
+.header__menu-item-link.exit {
+  display: flex;
+  align-items: center;
+  color: #000000;
+  text-decoration: none;
+  font-size: 19px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  line-height: 1.2;
+  color: #DC143C;
+  margin-bottom: 20px;
+  &::before {
+    content: '';
+    display: inline-block;
+    background-image: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M2.16667 15.5C1.70833 15.5 1.31583 15.3369 0.989167 15.0108C0.663055 14.6842 0.5 14.2917 0.5 13.8333V2.16667C0.5 1.70833 0.663055 1.31583 0.989167 0.989167C1.31583 0.663055 1.70833 0.5 2.16667 0.5H8V2.16667H2.16667V13.8333H8V15.5H2.16667ZM11.3333 12.1667L10.1875 10.9583L12.3125 8.83333H5.5V7.16667H12.3125L10.1875 5.04167L11.3333 3.83333L15.5 8L11.3333 12.1667Z' fill='%23DC143C'/%3E%3C/svg%3E%0A");
+    width: 16px;
+    height: 16px;
+    margin-right: 10px;
   }
 }

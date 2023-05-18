@@ -28,7 +28,7 @@ class CreditsController < ApplicationController
   end
 
   def destroy 
-    credit.destroy
+    @credit.destroy
     redirect_to root_path
   end
 
@@ -39,11 +39,11 @@ private
   end
 
   def set_credit 
-    @credit = Credit.find_by id: params[id:]
+    @credit = Credit.find_by id: params[:id]
   end
 
   def credit_params 
-    params.require(:credit).permit(:value,:coment, :user_id)
+    params.require(:credit).permit(:value, :coment, :user_id)
   end
 
 end

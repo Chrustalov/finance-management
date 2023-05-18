@@ -1,6 +1,7 @@
 @import 'bootstrap/scss/bootstrap';
 @import 'users_forms.sass.scss';
 @import 'home.sass.scss';
+@import 'forms.sass.scss';
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
@@ -31,7 +32,7 @@ p {
 }
 .nav {
   background-color: #74756a;
-color: rgb(86, 108, 149);
+  color: rgb(86, 108, 149);
 }
 
 .form_outlay {
@@ -44,56 +45,4 @@ color: rgb(86, 108, 149);
 
 .form_credit{
   margin: 100px;
-}
-
-.home_deposits {
-  margin: 30px;
-  border: solid 5px #000;
-  box-shadow: 3px 3px 3px #746969 ;
-  .home_deposit {
-    padding: 4px;
-    box-shadow: inset 3px 3px 3px #adb49b ; 
-    margin: 7px;
-    border: bashed 2px #000;
-  }
-}
-
-.home_credits {
-  margin: 30px;
-  border: solid 5px #000;
-  box-shadow: 3px 3px 3px #746969 ;
-  .home_credit {
-    padding: 4px;
-    box-shadow: inset 3px 3px 3px #adb49b ; 
-    margin: 7px;
-    border: bashed 2px #000;
-  }
-}
-
-.home_outlays {
-  margin: 30px;
-  border: solid 5px #000;
-  box-shadow: 3px 3px 3px #746969 ;
-  .home_outlay {
-    padding: 4px;
-    box-shadow: inset 3px 3px 3px #adb49b ; 
-    margin: 7px;
-    border: bashed 2px #000;
-  }
-}
-
-.form_income {
-  margin: 100px;
-}
-
-.home_incomes {
-  margin: 30px;
-  border: solid 5px #000;
-  box-shadow: 3px 3px 3px #746969 ;
-  .home_income {
-    padding: 4px;
-    box-shadow: inset 3px 3px 3px #adb49b ; 
-    margin: 7px;
-    border: bashed 2px #000;
-  }
 }

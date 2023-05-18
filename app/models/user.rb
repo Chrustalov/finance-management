@@ -9,4 +9,7 @@ class User < ApplicationRecord
   has_many :credits
   has_many :deposits
   has_many :incomes
+  attribute :balance, default: 0
+  attribute :deposit, default: 0
+  attribute :credit, default: 0
 end

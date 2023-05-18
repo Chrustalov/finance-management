@@ -28,7 +28,7 @@ class OutlaysController < ApplicationController
   end
 
   def destroy 
-    outlay.destroy
+    @outlay.destroy
     redirect_to root_path
   end
 
@@ -41,7 +41,7 @@ private
 
 
   def set_outlay 
-    @outlay = Outlay.find_by id: params[id:]
+    @outlay = Outlay.find_by id: params[:id]
   end
 
   def outlay_params 
