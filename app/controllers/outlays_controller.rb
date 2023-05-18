@@ -2,13 +2,10 @@ class OutlaysController < ApplicationController
   before_action :authenticate_user!
   before_action :authorize_outlay
   before_action :set_outlay, only: %i[destroy edit update]
-<<<<<<< HEAD
   after_action :update_balance, only: %i[create update destroy]
   def index 
     @outlays = Outlay.all
   end 
-=======
->>>>>>> dd952fe389c9c990919f749cf040a3eb932462ad
 
   def new 
     @outlay = Outlay.new 
