@@ -10,10 +10,12 @@ class CreditsController < ApplicationController
   def create
     @credit = current_user.credits.build(credit_params)
     if @credit.save
+      flash[:notice] = "Кредит створено успішно"
       current_user.update_credit
       current_user.update_balance
       redirect_to root_path
     else 
+      flash[:alert] = "Кредит не створено"
       render :new
     end
   end
@@ -31,6 +33,7 @@ class CreditsController < ApplicationController
 
   def destroy
     @credit.destroy
+    flash[:info] = "Кредит видалено"
     current_user.update_credit
     current_user.update_balance
     redirect_to root_path

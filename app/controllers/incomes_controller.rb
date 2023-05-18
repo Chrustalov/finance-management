@@ -14,8 +14,10 @@ class IncomesController < ApplicationController
   def create
     @income = current_user.incomes.build(income_params)
     if @income.save
+      flash[:notice] = "Дохід додано успішно"
       redirect_to root_path
     else 
+      flash[:alert] = "Дохід не створено"
       render :new
     end
   end
@@ -32,6 +34,7 @@ class IncomesController < ApplicationController
   end
 
   def destroy 
+    flash[:info] = "Дохід видалено"
     @income.destroy
     redirect_to root_path
   end

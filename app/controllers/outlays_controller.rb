@@ -14,8 +14,10 @@ class OutlaysController < ApplicationController
   def create
     @outlay = current_user.outlays.build(outlay_params)
     if @outlay.save
+      flash[:notice] = "Витрату додано успішно"
       redirect_to root_path
     else 
+      flash[:alert] = "Витрату не додано"
       render :new
     end
   end
@@ -25,6 +27,7 @@ class OutlaysController < ApplicationController
 
   def update 
     if @outlay.update outlay_params
+      
       redirect_to root_path
     else 
       render :edit
@@ -33,6 +36,7 @@ class OutlaysController < ApplicationController
 
   def destroy 
     @outlay.destroy
+    flash[:info] = "Витрату видалено"
     redirect_to root_path
   end
 

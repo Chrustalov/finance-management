@@ -15,10 +15,12 @@ class DepositsController < ApplicationController
       redirect_to root_path
     else
       if @deposit.save
+        flash[:notice] = "Депозит створено успішно"
         current_user.update_deposit
         current_user.update_balance
         redirect_to root_path
       else 
+        flash[:alert] = "Депозит не створено"
         render :new
       end
     end
@@ -37,6 +39,7 @@ class DepositsController < ApplicationController
 
   def destroy 
     @deposit.destroy
+    flash[:info] = "Депозит видалено"
     current_user.update_deposit
     current_user.update_balance
     redirect_to root_path
