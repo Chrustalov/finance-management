@@ -9,10 +9,18 @@ class DepositsController < ApplicationController
 
   def create
     @deposit = current_user.deposits.build(deposit_params)
-    if @deposit.save
+    
+    if params[:deposit][:value].to_i > current_user.balance
+      flash[:alert] = "Не Хватає бабок"
       redirect_to root_path
-    else 
-      render :new
+    else
+      if @deposit.save
+        current_user.update_deposit
+        current_user.update_balance
+        redirect_to root_path
+      else 
+        render :new
+      end
     end
   end
 
@@ -29,6 +37,8 @@ class DepositsController < ApplicationController
 
   def destroy 
     @deposit.destroy
+    current_user.update_deposit
+    current_user.update_balance
     redirect_to root_path
   end
 

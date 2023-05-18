@@ -14,8 +14,15 @@ class User < ApplicationRecord
   has_many :incomes
 
   def update_balance 
-    self.update(balance: calculate_total_income - calculate_total_outlay)
-    puts "Updated balance: #{self.balance}"
+    self.update(balance: (calculate_total_income - calculate_total_outlay) + self.credits.sum(:value) - (self.deposits.sum(:value)))
+  end
+
+  def update_credit
+    self.update(credit: self.credits.sum(:value))
+  end
+
+  def update_deposit
+    self.update(deposit: self.deposits.sum(:value))
   end
 
   private 

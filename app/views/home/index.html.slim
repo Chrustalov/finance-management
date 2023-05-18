@@ -1,3 +1,6 @@
+- flash.each do |type, msg|
+    h1
+      = msg
 .home
   .home__inner
     aside.home__left
@@ -15,10 +18,10 @@
             span Кредит
             = current_user.credit
         .actions-inner
-          = link_to "Добавити дохід", new_outlay_path, class: "btn"
+          = link_to "Добавити дохід", new_income_path, class: "btn"
           = link_to "Добавити витрату", new_outlay_path, class: "btn"
-          = link_to "Добавити депозит", new_outlay_path, class: "btn"
-          = link_to "Добавити кредит", new_outlay_path, class: "btn"
+          = link_to "Добавити депозит", new_deposit_path, class: "btn"
+          = link_to "Добавити кредит", new_credit_path, class: "btn"
         .btn.filled Статистика
         .exit
           - if current_user
@@ -53,7 +56,6 @@
                   .item__right
                     = link_to image_tag("exit.svg"), income_path(income.id), method: :delete,
                       data: { turbo_confirm: "Чи впевнені ви в своїх діях?" }
-                    = link_to image_tag("edit.svg"), edit_income_path(income.id), class: "edit-icon"
             - else
               .not-items
                 .text У вас немає доходів. <br> <span>Бажаєте добавити?</span>
@@ -71,7 +73,6 @@
                   .item__right
                     = link_to image_tag("exit.svg"), outlay_path(outlay), method: :delete,
                       data: { turbo_confirm: "Чи впевнені ви в своїх діях?" }
-                    = link_to image_tag("edit.svg"), edit_outlay_path(outlay.id), class: "edit-icon"
             - else
               .not-items
                 .text У вас немає витрат. <br> <span>Бажаєте добавити?</span>
@@ -89,7 +90,6 @@
                   .item__right
                     = link_to image_tag("exit.svg"), deposit_path(deposit), method: :delete,
                       data: { turbo_confirm: "Чи впевнені ви в своїх діях?" }
-                    = link_to image_tag("edit.svg"), edit_deposit_path(deposit.id), class: "edit-icon"
             - else
               .not-items
                 .text У вас немає депозитів. <br> <span>Бажаєте добавити?</span>
@@ -107,7 +107,6 @@
                   .item__right
                     = link_to image_tag("exit.svg"), credit_path(credit), method: :delete,
                       data: { turbo_confirm: "Чи впевнені ви в своїх діях?" }
-                    = link_to image_tag("edit.svg"), edit_credit_path(credit.id), class: "edit-icon"
             - else
               .not-items
                 .text У вас немає кредитів. <br> <span>Бажаєте добавити?</span>

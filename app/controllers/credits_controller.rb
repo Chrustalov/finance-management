@@ -10,6 +10,8 @@ class CreditsController < ApplicationController
   def create
     @credit = current_user.credits.build(credit_params)
     if @credit.save
+      current_user.update_credit
+      current_user.update_balance
       redirect_to root_path
     else 
       render :new
@@ -27,11 +29,12 @@ class CreditsController < ApplicationController
     end
   end
 
-  def destroy 
+  def destroy
     @credit.destroy
+    current_user.update_credit
+    current_user.update_balance
     redirect_to root_path
   end
-
 
 private
   def authorize_credit
