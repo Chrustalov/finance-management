@@ -2,9 +2,6 @@ class DepositsController < ApplicationController
   before_action :authenticate_user!
   before_action :authorize_deposit
   before_action :set_deposit, only: %i[destroy edit update]
-  def index 
-    @deposits = Deposit.all
-  end 
 
   def new 
     @deposit = Deposit.new 

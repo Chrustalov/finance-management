@@ -2,9 +2,6 @@ class IncomesController < ApplicationController
   before_action :authenticate_user!
   before_action :authorize_income
   before_action :set_income, only: %i[destroy edit update]
-  def index 
-    @incomes = Income.all
-  end 
 
   def new 
     @income = Income.new 

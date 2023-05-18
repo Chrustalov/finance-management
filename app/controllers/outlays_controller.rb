@@ -2,9 +2,6 @@ class OutlaysController < ApplicationController
   before_action :authenticate_user!
   before_action :authorize_outlay
   before_action :set_outlay, only: %i[destroy edit update]
-  def index 
-    @outlays = Outlay.all
-  end 
 
   def new 
     @outlay = Outlay.new 
