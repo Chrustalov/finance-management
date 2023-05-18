@@ -2,6 +2,7 @@ class IncomesController < ApplicationController
   before_action :authenticate_user!
   before_action :authorize_income
   before_action :set_income, only: %i[destroy edit update]
+  after_action :update_balance, only: %i[create update destroy]
   def index 
     @incomes = Income.all
   end 
@@ -39,6 +40,10 @@ class IncomesController < ApplicationController
 private
   def authorize_income
     authorize :income
+  end
+
+  def update_balance 
+    current_user.update_balance
   end
 
   def set_income 

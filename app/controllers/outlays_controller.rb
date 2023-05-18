@@ -2,6 +2,7 @@ class OutlaysController < ApplicationController
   before_action :authenticate_user!
   before_action :authorize_outlay
   before_action :set_outlay, only: %i[destroy edit update]
+  after_action :update_balance, only: %i[create update destroy]
   def index 
     @outlays = Outlay.all
   end 
@@ -42,6 +43,9 @@ private
     authorize :outlay 
   end
 
+  def update_balance 
+    current_user.update_balance
+  end
 
   def set_outlay 
     @outlay = Outlay.find_by id: params[id:]
