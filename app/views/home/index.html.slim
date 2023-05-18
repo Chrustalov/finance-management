@@ -1,38 +1,73 @@
-.home_block1 
-  h1 hellj 
-.home_block2 
-  h2 r;lr;lv
-.btn.btn-primary Lol
-
-
-li class="header__menu-item"
-  - if current_user
-    = link_to "Вихід", destroy_user_session_path, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "header__menu-item-link exit"
-  - else
-    = link_to "Вхід", new_user_session_path, class: "header__menu-item-link exit"
-.home_deposits
-  -if @deposits
-    -@deposits.each do |f| 
-      .home_deposit
-        p = f.value 
-        p deposit
-.home_outlays
-  -if @outlays
-    -@outlays.each do |f| 
-      .home_outlay
-        p = f.value 
-        p = f.coment
-        p outlay
-.home_credits  
-  -if @credits
-    -@credits.each do |f|  
-      .home_credit
-        p = f.value 
-        p credit
-.home_incomes  
-  -if @incomes
-    -@incomes.each do |f|  
-      .home_income
-        p = f.value
-        p = f.coment 
-        p income
+.home
+  .home__inner
+    aside.home__left
+      .inner-flex-column
+        = image_tag "user_icon.png"
+        = current_user.email
+        .user__bill
+          .balance = current_user.balance
+          .deposit = current_user.deposit
+          .credit = current_user.credit
+        .personal__data  
+          .phone
+            = current_user.phone
+        .exit
+          - if current_user
+            = link_to "Вихід", destroy_user_session_path, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "header__menu-item-link exit"
+          - else
+            = link_to "Вхід", new_user_session_path, class: "header__menu-item-link exit"
+    main.home__right
+      ul#myTab.nav.nav-tabs[role="tablist"]
+        li.nav-item[role="presentation"]
+          button#incomes-tab.nav-link.active[data-bs-toggle="tab" data-bs-target="#incomes-tab-pane" type="button" role="tab" aria-controls="incomes-tab-pane" aria-selected="true"]
+            | Доходи
+        li.nav-item[role="presentation"]
+          button#outlays-tab.nav-link[data-bs-toggle="tab" data-bs-target="#outlays-tab-pane" type="button" role="tab" aria-controls="outlays-tab-pane" aria-selected="false"]
+            | Витрати
+        li.nav-item[role="presentation"]
+          button#deposits-tab.nav-link[data-bs-toggle="tab" data-bs-target="#deposits-tab-pane" type="button" role="tab" aria-controls="deposits-tab-pane" aria-selected="false"]
+            | Депозити
+        li.nav-item[role="presentation"]
+          button#credits-tab.nav-link[data-bs-toggle="tab" data-bs-target="#credits-tab-pane" type="button" role="tab" aria-controls="credits-tab-pane" aria-selected="false"]
+            | Кредити
+      #myTabContent.tab-content
+        #incomes-tab-pane.tab-pane.fade.show.active[role="tabpanel" aria-labelledby="incomes-tab" tabindex="0"]
+          - unless @incomes.blank?
+            - @incomes.each do |income| 
+              .item
+                .item__left
+                  h4.item__sum 
+                    span Сума
+                    = income.value
+                  p.item__text = income.coment
+                .item__right
+                  = link_to image_tag("exit.svg"), income_path(income),
+                    data: { turbo_method: :delete, turbo_confirm: "Чи впевнені ви в своїх діях?" }
+                  = link_to image_tag("edit.svg"), edit_income_path(income.id), class: "edit-icon"
+          - else
+            .not-items
+              .text У вас немає доходів. <br> Бажаєте створити?
+        #outlays-tab-pane.tab-pane.fade[role="tabpanel" aria-labelledby="outlays-tab" tabindex="0"]
+          - if @outlays
+            - @outlays.each do |f| 
+              .home_deposit
+                p = f.value 
+                p Витрата
+          - else
+            .not-items
+              .text У вас немає доходів. <br> Бажаєте створити?
+        #deposits-tab-pane.tab-pane.fade[role="tabpanel" aria-labelledby="deposits-tab" tabindex="0"]
+          - if @deposits
+            - @deposits.each do |f| 
+              .home_deposit
+                p = f.value 
+                p Депозит
+          - else
+            .not-items
+              .text У вас немає доходів. <br> Бажаєте створити?
+        #credits-tab-pane.tab-pane.fade[role="tabpanel" aria-labelledby="credits-tab" tabindex="0"]
+          - if @credits
+            - @credits.each do |f| 
+              .home_deposit
+                p = f.value 
+                p Кредит

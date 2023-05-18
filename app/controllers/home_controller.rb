@@ -7,8 +7,7 @@ class HomeController < ApplicationController
     @credits = Credit.where(user_id: current_user.id)
     @deposits = Deposit.where(user_id: current_user.id)
     @outlays = Outlay.where(user_id: current_user.id)
-    @incomes = Income.where(user_id: current_user.id)
-
+    @incomes = Income.where(user_id: current_user.id)    
   end
 
   private

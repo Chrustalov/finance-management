@@ -3,10 +3,6 @@ class CreditsController < ApplicationController
   before_action :authorize_credit
   before_action :set_credit, only: %i[destroy edit update]
 
-  def index 
-    @credits = Credit.all
-  end 
-
   def new 
     @credit = Credit.new 
   end

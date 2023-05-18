@@ -32,7 +32,7 @@ class IncomesController < ApplicationController
   end
 
   def destroy 
-    income.destroy
+    @income.destroy
     redirect_to root_path
   end
 
@@ -47,11 +47,11 @@ private
   end
 
   def set_income 
-    @income = Income.find_by id: params[id:]
+    @income = Income.find_by id: params[:id]
   end
 
   def income_params 
-    params.require(:income).permit(:value,:coment, :user_id)
+    params.require(:income).permit(:value, :coment, :user_id)
   end
 
 end
