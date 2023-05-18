@@ -46,7 +46,7 @@ private
   end
 
   def deposit_params 
-    params.require(:deposit).permit(:value, :user_id)
+    params.require(:deposit).permit(:value,:coment, :user_id)
   end
 
 end
