@@ -8,8 +8,21 @@ class User < ApplicationRecord
   has_many :outlays
   has_many :credits
   has_many :deposits
-  has_many :incomes
   attribute :balance, default: 0
   attribute :deposit, default: 0
   attribute :credit, default: 0
+  has_many :incomes
+
+  def update_balance 
+    self.balance = calculate_total_income - calculate_total_outlay
+  end
+
+  private 
+    def calculate_total_income 
+      return self.incomes.sum(:value)
+    end
+
+    def calculate_total_outlay 
+      return self.outlays.sum(:value)
+    end
 end
