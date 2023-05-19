@@ -1,13 +1,12 @@
 class HomeController < ApplicationController 
   before_action :authenticate_user!
   before_action :authorize_home
-
   def index
-    # Код дії
-    @credits = Credit.where(user_id: current_user.id)
-    @deposits = Deposit.where(user_id: current_user.id)
-    @outlays = Outlay.where(user_id: current_user.id)
-    @incomes = Income.where(user_id: current_user.id)    
+    
+    @pagy1, @credits = pagy(Credit.where(user_id: current_user.id), items: 8)
+    @pagy2, @deposits = pagy(Deposit.where(user_id: current_user.id), items: 8)
+    @pagy3, @outlays = pagy(Outlay.where(user_id: current_user.id), items: 8)
+    @pagy4, @incomes = pagy(Income.where(user_id: current_user.id), items: 8)
   end
 
   private
