@@ -100,6 +100,7 @@
     }
   }
   &__right {
+    position: relative;
     background: #f3f3f3;
     border-radius: 0 15px 15px 0;
     padding: 40px 30px;
@@ -224,5 +225,55 @@
     width: 16px;
     height: 16px;
     margin-right: 10px;
+  }
+}
+
+.pagination__inner {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 30px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .page-item {
+    width: 40px;
+    height: 30px;
+    border: 1px solid #DC143C;
+    border-radius: 3px;
+    margin: 0 7.5px;
+    .page-link {
+      font-weight: 400;
+      font-size: 13px;
+      line-height: 20px;
+      color: #DC143C;
+      border: none;
+      background: none;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    &.active {
+      background: #DC143C;
+      .page-link {
+        color: #fff;
+      }
+    }
+  }
+  .page-item.prev, .page-item.next {
+    border: 0;
+    background: none;
+    width: initial;
+    height: initial;
+  }
+  .page-item.next {
+    margin-left: 50px;
+  }
+  .page-item.prev {
+    margin-right: 50px;
   }
 }

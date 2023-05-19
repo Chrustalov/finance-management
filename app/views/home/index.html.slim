@@ -60,6 +60,8 @@
               .not-items
                 .text У вас немає доходів. <br> <span>Бажаєте добавити?</span>
                 = link_to "Добавити", new_income_path, class: "btn"
+          .pagination__inner
+            == pagy_bootstrap_nav(@pagy1)
         #outlays-tab-pane.tab-pane.fade[role="tabpanel" aria-labelledby="outlays-tab" tabindex="0"]
           .item__inner
             - unless @outlays.blank?
@@ -77,6 +79,8 @@
               .not-items
                 .text У вас немає витрат. <br> <span>Бажаєте добавити?</span>
                 = link_to "Добавити", new_outlay_path, class: "btn"
+          .pagination__inner
+            == pagy_bootstrap_nav(@pagy2)
         #deposits-tab-pane.tab-pane.fade[role="tabpanel" aria-labelledby="deposits-tab" tabindex="0"]
           .item__inner
             - unless @deposits.blank?
@@ -94,6 +98,8 @@
               .not-items
                 .text У вас немає депозитів. <br> <span>Бажаєте добавити?</span>
                 = link_to "Добавити", new_deposit_path, class: "btn"
+          .pagination__inner
+            == pagy_bootstrap_nav(@pagy3)
         #credits-tab-pane.tab-pane.fade[role="tabpanel" aria-labelledby="credits-tab" tabindex="0"]
           .item__inner
             - unless @credits.blank?
@@ -111,7 +117,8 @@
               .not-items
                 .text У вас немає кредитів. <br> <span>Бажаєте добавити?</span>
                 = link_to "Добавити", new_credit_path, class: "btn"
-
+          .pagination__inner
+            == pagy_bootstrap_nav(@pagy4)
 javascript:
   document.addEventListener("DOMContentLoaded", function() {
     function hideFlashMessage(setTime){
