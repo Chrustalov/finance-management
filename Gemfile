@@ -22,6 +22,8 @@ gem "sprockets-rails"
 
 gem 'tzinfo-data'
 
+gem 'pagy'
+
 gem "bootsnap", require: false
 
 group :development, :test do
