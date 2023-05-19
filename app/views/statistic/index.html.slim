@@ -1,20 +1,43 @@
-=form_tag(statistic_path, method: :get) do 
-  =label_tag :max_price, "max val" 
-  =number_field_tag :max_value 
-  =label_tag :min_price, "min val" 
-  =number_field_tag :min_value 
-= submit_tag "Фільтрувати" 
-
-
--if @credits
-  -@credits.each do |cr|
-    p =cr.value
--if @deposits
-  -@deposits.each do |cr|
-    p =cr.value
--if @incomes
-  -@incomes.each do |cr|
-    p =cr.value
--if @outlays
-  -@outlays.each do |cr|
-    p =cr.value
+.statistics
+  a.btn.filled href=root_path Вернутись назад
+  h1 Статистика
+  .statistics__inner
+    = simple_form_for :statistic, url: statistic_path, method: :get do |f|
+      = f.label :min_price, label: 'Мінімальне значення', class: 'input-title'
+      = f.input :min_price, label: false, input_html: { class: "create__input" }, placeholder: "Мінімальне значення"
+      = f.label :max_price, label: 'Максимальне значення', class: 'input-title'
+      = f.input :max_price, label: false, input_html: { class: "create__input" }, type: "number", placeholder: "Максимальне значення"
+      .form-actions
+        = f.submit "Фільтрувати", class: "btn"
+    = simple_form_for :statistic, url: statistic_path, method: :get do |f|
+      = f.label :min_price, label: 'Мінімальне значення', class: 'input-title'
+      = f.input :min_price, label: false, input_html: { class: "create__input" }, placeholder: "Мінімальне значення"
+      = f.label :max_price, label: 'Максимальне значення', class: 'input-title'
+      = f.input :max_price, label: false, input_html: { class: "create__input" }, type: "number", placeholder: "Максимальне значення"   
+      .form-actions
+        = f.submit "Фільтрувати", class: "btn"
+  .items
+    - if @credits
+      - @credits.each do |f|
+        .item
+          h6 Кредит
+          p = f.value
+          .post-show__date = f.created_at&.strftime("%H:%M %d.%m.%Y")
+    - if @deposits
+      - @deposits.each do |f|
+        .item
+          h6 Депозит
+          p = f.value
+          .post-show__date = f.created_at&.strftime("%H:%M %d.%m.%Y")
+    -if @incomes
+      - @incomes.each do |f|
+        .item
+          h6 Дохід
+          p = f.value
+          .post-show__date = f.created_at&.strftime("%H:%M %d.%m.%Y")
+    -if @outlays
+      - @outlays.each do |f|
+        .item
+          h6 Витрата
+          p = f.value
+          .post-show__date = f.created_at&.strftime("%H:%M %d.%m.%Y")

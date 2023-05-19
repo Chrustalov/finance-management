@@ -4,52 +4,53 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  .form-content {
-    width: 500px;
-    padding: 30px;
-    border: 2px solid #DC143C;
-    box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
-    .create__input {
-      background: #FFFEFE;
-      border: 1px solid #DC143C;
-      border-radius: 5px;
-      height: 45px;
-      width: 100%;
-      margin-bottom: 40px;
-      &::placeholder {
-        font-weight: 300;
-        font-size: 16px;
-        line-height: 18px;
-        color: #000000;
-        opacity: 0.5;
-      }
-    }
-    .input-title {
-      font-weight: 700;
-      font-size: 18px;
-      line-height: 29px;
+}
+
+.form-content {
+  width: 500px;
+  padding: 30px;
+  border: 2px solid #DC143C;
+  box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  .create__input {
+    background: #FFFEFE;
+    border: 1px solid #DC143C;
+    border-radius: 5px;
+    height: 45px;
+    width: 100%;
+    margin-bottom: 40px;
+    &::placeholder {
+      font-weight: 300;
+      font-size: 16px;
+      line-height: 18px;
       color: #000000;
-      margin-bottom: 8px;
+      opacity: 0.5;
     }
-    .btn {
-      line-height: 1;
-      width: fit-content;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 16px 47px;
-      margin: 0;
-    }
-    .form-actions {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin: 0;
-      .btn.filled {
-        margin-right: 10px;
-        margin-left: 0;
-      }
+  }
+  .input-title {
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 29px;
+    color: #000000;
+    margin-bottom: 8px;
+  }
+  .btn {
+    line-height: 1;
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px 47px;
+    margin: 0;
+  }
+  .form-actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0;
+    .btn.filled {
+      margin-right: 10px;
+      margin-left: 0;
     }
   }
 }
