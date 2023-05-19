@@ -1,5 +1,5 @@
 - flash.each do |type, msg|
-    h1
+    .flash-alert class="#{type}"
       = msg
 .home
   .home__inner
@@ -18,10 +18,10 @@
             span Кредит
             = current_user.credit
         .actions-inner
-          = link_to "Добавити дохід", new_income_path, class: "btn"
-          = link_to "Добавити витрату", new_outlay_path, class: "btn"
-          = link_to "Добавити депозит", new_deposit_path, class: "btn"
-          = link_to "Добавити кредит", new_credit_path, class: "btn"
+          = link_to "Додати дохід", new_income_path, class: "btn"
+          = link_to "Додати витрату", new_outlay_path, class: "btn"
+          = link_to "Додати депозит", new_deposit_path, class: "btn"
+          = link_to "Додати кредит", new_credit_path, class: "btn"
         .btn.filled Статистика
         .exit
           - if current_user
@@ -111,3 +111,17 @@
               .not-items
                 .text У вас немає кредитів. <br> <span>Бажаєте добавити?</span>
                 = link_to "Добавити", new_credit_path, class: "btn"
+
+javascript:
+  document.addEventListener("DOMContentLoaded", function() {
+    function hideFlashMessage(setTime){
+      let time = 0
+      $($('.flash-alert').get().reverse()).each(function() {
+        time = time + setTime
+        $(this).delay(time).fadeOut(300);
+        // debugger;
+      });
+    }
+
+    hideFlashMessage(3000)
+  });

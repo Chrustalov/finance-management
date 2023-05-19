@@ -53,3 +53,23 @@
     }
   }
 }
+
+.flash-alert {
+  padding: 12px 25px;
+  border-radius: 6px;
+  font-size: 18px;
+  position: absolute;
+  top: 3%;
+  left: 9%;
+  z-index: 999;
+  &.notice, &.info {
+    border: 1px solid #4caf50;
+    background: rgba(234, 246, 235, 0.9);
+    color: #4CAF50;
+  }
+  &.alert {
+    color: #E91E63;
+    background: rgb(254, 247, 249, 0.8);
+    border: 1px solid #E91E63;
+  }
+}

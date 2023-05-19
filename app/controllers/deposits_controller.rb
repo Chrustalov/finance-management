@@ -11,7 +11,7 @@ class DepositsController < ApplicationController
     @deposit = current_user.deposits.build(deposit_params)
     
     if params[:deposit][:value].to_i > current_user.balance
-      flash[:alert] = "Не Хватає бабок"
+      flash[:alert] = "Не хватає грошей"
       redirect_to root_path
     else
       if @deposit.save
