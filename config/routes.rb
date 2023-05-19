@@ -9,11 +9,13 @@ Rails.application.routes.draw do
   resources :credits
   resources :outlays
   resources :incomes
-
+   
   devise_scope :user do
     get '/users/sign_out', to: 'devise/sessions#destroy'
   end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+
+ 
   get 'statistic', to: 'statistic#index'
   # Defines the root path route ("/")
   # root "articles#index"

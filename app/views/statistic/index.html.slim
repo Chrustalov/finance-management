@@ -1,0 +1,20 @@
+=form_tag(statistic_path, method: :get) do 
+  =label_tag :max_price, "max val" 
+  =number_field_tag :max_value 
+  =label_tag :min_price, "min val" 
+  =number_field_tag :min_value 
+= submit_tag "Фільтрувати" 
+
+
+-if @credits
+  -@credits.each do |cr|
+    p =cr.value
+-if @deposits
+  -@deposits.each do |cr|
+    p =cr.value
+-if @incomes
+  -@incomes.each do |cr|
+    p =cr.value
+-if @outlays
+  -@outlays.each do |cr|
+    p =cr.value
