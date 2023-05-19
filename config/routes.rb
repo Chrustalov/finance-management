@@ -14,7 +14,7 @@ Rails.application.routes.draw do
     get '/users/sign_out', to: 'devise/sessions#destroy'
   end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-
+  post '/reset_variable', to: 'statistic#reset_variable', as: 'reset_variable'
  
   get 'statistic', to: 'statistic#index'
   # Defines the root path route ("/")

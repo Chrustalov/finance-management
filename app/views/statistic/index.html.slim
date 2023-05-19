@@ -3,19 +3,21 @@
   h1 Статистика
   .statistics__inner
     = simple_form_for :statistic, url: statistic_path, method: :get do |f|
-      = f.label :min_price, label: 'Мінімальне значення', class: 'input-title'
-      = f.input :min_price, label: false, input_html: { class: "create__input" }, placeholder: "Мінімальне значення"
-      = f.label :max_price, label: 'Максимальне значення', class: 'input-title'
-      = f.input :max_price, label: false, input_html: { class: "create__input" }, type: "number", placeholder: "Максимальне значення"
+      = f.label :min_value, label: 'Мінімальне значення', class: 'input-title'
+      = f.input :min_value, label: false, input_html: { class: "create__input", value: @min_value }, placeholder: "Мінімальне значення"
+      = f.label :max_value, label: 'Максимальне значення', class: 'input-title'
+      = f.input :max_value, label: false, input_html: { class: "create__input", value: @max_value }, type: "number", placeholder: "Максимальне значення"
       .form-actions
         = f.submit "Фільтрувати", class: "btn"
+        = button_tag 'Скинути', type: 'button', class: 'btn', onclick: "$('.create__input').val('');"
     = simple_form_for :statistic, url: statistic_path, method: :get do |f|
-      = f.label :min_price, label: 'Мінімальне значення', class: 'input-title'
-      = f.input :min_price, label: false, input_html: { class: "create__input" }, placeholder: "Мінімальне значення"
-      = f.label :max_price, label: 'Максимальне значення', class: 'input-title'
-      = f.input :max_price, label: false, input_html: { class: "create__input" }, type: "number", placeholder: "Максимальне значення"   
+      = f.label :min_time, label: 'Мінімальне значення', class: 'input-title'
+      = f.input :min_time, label: false, input_html: { class: "create__input",  value: @min_time}, placeholder: "Мінімальне значення"
+      = f.label :max_time, label: 'Максимальне значення', class: 'input-title'
+      = f.input :max_time, label: false, input_html: { class: "create__input", value: @max_time}, type: "number", placeholder: "Максимальне значення"   
       .form-actions
         = f.submit "Фільтрувати", class: "btn"
+        = button_tag 'Скинути', type: 'button', class: 'btn', onclick: "$('.create__input').val('');"
   .items
     - if @credits
       - @credits.each do |f|
